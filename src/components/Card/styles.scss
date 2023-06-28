@@ -1,5 +1,17 @@
 .card{
     font-size: 0.9vw;
+    box-shadow: 3px 3px rgb(250, 222, 222), -1em 0 1em rgb(204, 236, 205);
+    transition: all ease 0.5s;
+    padding: 10%;
+    &:hover{
+        transform: translate(0,-20px);
+    }
+    &__like{
+       padding: 5%;
+    }
+    &__img{
+        width: 90%;
+    }
     &__btn{
         border: 2px solid rgb(61, 165, 105);
         padding: 2.5%;

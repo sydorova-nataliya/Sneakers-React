@@ -16,7 +16,7 @@ const Basket = ({onRemove, onClose, basketItems = []})=>{
               <p className='basket__title'>{name}</p>
               <b className='basket__price'>{price}</b>
             </div>
-            <img className="basket__remove" src="/img/remove.svg" alt="remove" onClick={()=> onRemove(id)}/>
+            <img className="basket__close" src="/img/remove.svg" alt="remove" onClick={()=> onRemove(id)}/>
           </div>
           )) : 
           <div className='basket-empty'>

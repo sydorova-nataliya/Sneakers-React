@@ -25,7 +25,7 @@ const App=()=> {
         onClose={()=>setCartOpened(false)} 
         onRemove={(id)=>{
           axios.delete(`https://649b9cff048075719236bd66.mockapi.io/basket/${id}`)
-          setBasketItems((prevItem)=> prevItem.filter((item)=> item.id!==id))
+          setBasketItems((prevItem)=> prevItem.filter((item)=> Number(item.id)!==Number(id)))
         }}
       />
     }
