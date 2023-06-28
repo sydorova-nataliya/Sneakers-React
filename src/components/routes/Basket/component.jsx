@@ -16,12 +16,12 @@ const Basket = ({onRemove, onClose, basketItems = []})=>{
               <p className='basket__title'>{name}</p>
               <b className='basket__price'>{price}</b>
             </div>
-            <img className="basket__remove" src="/img/remove.svg" alt="remove" onClick={()=> onRemove(id)}/>
+            <img className="basket__close" src="/img/remove.svg" alt="remove" onClick={()=> onRemove(id)}/>
           </div>
           )) : 
           <div className='basket-empty'>
-            <h1 className='basket-empty__title'>Кошик пустий!</h1>
-            <button className='basket-empty__btn' onClick={onClose}>Повернутися назад!</button>
+            <h5 className='basket-empty__title title'>Кошик пустий!</h5>
+            <button className='basket-empty__btn btn' onClick={onClose}>Повернутися назад!</button>
           </div>
         }
 
