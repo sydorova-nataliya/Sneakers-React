@@ -2,17 +2,20 @@ import { useState } from 'react';
 
 import './styles.scss';
 
-const Card = ({id, name, price, imageURL, onClick})=>{
+const Card = ({id, name, price, imageURL, onClick, onFavourite, favorited = false})=>{
   const [isAdded, setIsAdded] = useState(false);
-  const [isFavourite, setIsFavourite] = useState(false);
+  const [isFavourite, setIsFavourite] = useState(favorited);
   const handlePlus=()=>{
     onClick({id,name, price, imageURL});
     setIsAdded(!isAdded);
   }
+  const handleFavourite=()=>{
+    onFavourite({id,name, price, imageURL});
+    setIsFavourite(!isFavourite);
+  }
   return (
   <div className="card">
-    {/* <img className='card__like' src="img/like.svg" alt="like"/> */}
-    {isFavourite ?  <img  className='cu-p' src="img/liked.svg" alt="like" onClick={()=>setIsFavourite(false)}/> : <img className='card__like cu-p ' src="img/like.svg" alt="like" onClick={()=>setIsFavourite(true)}/>}
+    {isFavourite ?  <img  className='cu-p' src="img/liked.svg" alt="like" onClick={handleFavourite}/> : <img className='card__like cu-p ' src="img/like.svg" alt="like" onClick={handleFavourite}/>}
     <img className='card__img' src={imageURL} alt="sneakers"/>
     <h5 className='card__title'>{name}</h5>
       <div className="d-flex">
@@ -23,4 +26,5 @@ const Card = ({id, name, price, imageURL, onClick})=>{
   </div>
   )
 }
+
 export default Card;

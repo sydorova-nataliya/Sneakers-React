@@ -17,7 +17,20 @@ body {
 .title{
   margin: 0;
 }
-
+.btn{
+  width: 100%;
+  font-size: 1vw;
+  background-color: rgb(61, 165, 105);
+  padding: 3%;
+  border-radius: 10px;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  transition: all ease 0.5s;
+  &:hover{
+    background-color:rgb(141, 195, 112);
+  }
+}
 .content{
   &__holder{
     margin-top: 1vw;

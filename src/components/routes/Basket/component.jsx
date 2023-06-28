@@ -20,8 +20,8 @@ const Basket = ({onRemove, onClose, basketItems = []})=>{
           </div>
           )) : 
           <div className='basket-empty'>
-            <h1 className='basket-empty__title'>Кошик пустий!</h1>
-            <button className='basket-empty__btn' onClick={onClose}>Повернутися назад!</button>
+            <h5 className='basket-empty__title title'>Кошик пустий!</h5>
+            <button className='basket-empty__btn btn' onClick={onClose}>Повернутися назад!</button>
           </div>
         }
 
