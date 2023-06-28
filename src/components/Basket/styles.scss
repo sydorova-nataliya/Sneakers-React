@@ -30,5 +30,27 @@
         border: 2px solid rgb(61, 165, 105);
       }
   }
+  &-empty{
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    &__btn{
+      width: 100%;
+      font-size: 1vw;
+      background-color: rgb(61, 165, 105);
+      padding: 3%;
+      border-radius: 10px;
+      color: #FFFFFF;
+      border: none;
+      cursor: pointer;
+      &:hover{
+        background-color:rgb(141, 195, 112);
+      }
+    }
+  }
+
 }
   

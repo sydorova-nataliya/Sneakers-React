@@ -2,10 +2,10 @@ import { useState } from 'react';
 
 import './styles.scss';
 
-const Card = ({ name, price, imageURL, onClick})=>{
+const Card = ({id, name, price, imageURL, onClick})=>{
   const [isAdded, setIsAdded] = useState(false);
   const handlePlus=()=>{
-    onClick({name, price, imageURL});
+    onClick({id,name, price, imageURL});
     setIsAdded(!isAdded);
   }
   return (

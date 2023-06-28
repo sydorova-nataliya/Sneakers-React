@@ -13,12 +13,23 @@ const App=()=> {
   useEffect(()=>{
     axios.get('https://649b9cff048075719236bd66.mockapi.io/items')
       .then(res=> setSneakers(res.data))
+    axios.get('https://649b9cff048075719236bd66.mockapi.io/basket')
+      .then(res=> setBasketItems(res.data))
   }, [])
 
   return (
     <div className='wrapper clear'>
-    {cartOpened && <Basket key={basketItems.id} basketItems = {basketItems} onClose={()=>setCartOpened(false)}/>}
-    <Header onClickCart={()=>setCartOpened(true)}/>
+    {cartOpened && <Basket 
+        key={basketItems.id} 
+        basketItems = {basketItems}
+        onClose={()=>setCartOpened(false)} 
+        onRemove={(id)=>{
+          axios.delete(`https://649b9cff048075719236bd66.mockapi.io/basket/${id}`)
+          setBasketItems((prevItem)=> prevItem.filter((item)=> item.id!==id))
+        }}
+      />
+    }
+    <Header onClickCart={()=>setCartOpened(true) }/>
     <div className='content p-40 '>
       <div className="d-flex align-center justify-between">
         <h1 className="content__title title">{searchValue ? `Пошук за запитом: ${searchValue}` : "Всі кросівки" }</h1> 
