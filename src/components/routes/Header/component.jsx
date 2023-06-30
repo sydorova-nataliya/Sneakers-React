@@ -16,7 +16,7 @@ const Header = ({onClickCart})=>{
           <img className="header__btn cu-p" src="/img/basket.svg" alt="basket"/>
         </li>
         <li>
-          <Link to="/favourites"><img className="header__btn" src="/img/like.svg" alt="like"/></Link>
+          <Link to="/favorites"><img className="header__btn" src="/img/like.svg" alt="like"/></Link>
         </li>
         <li>
           <img className="header__btn" src="/img/account.svg" alt="account"/>

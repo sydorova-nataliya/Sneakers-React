@@ -5,36 +5,41 @@ import {Route, Routes} from 'react-router-dom';
 import Header from "./components/routes/Header";
 import Basket from "./components/routes/Basket";
 import HomePage from "./components/pages/HomePage";
-import FavouritesPage from "./components/pages/FavouritesPage";
+import FavoritesPage from "./components/pages/FavoritesPage";
+
 const App=()=> {
   const [cartOpened, setCartOpened] = useState(false);
   const [sneakers, setSneakers] = useState([]);
-  const [favourites, setFavourites] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [basketItems, setBasketItems] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(()=>{
-    axios.get('https://649b9cff048075719236bd66.mockapi.io/items')
-      .then(res=> setSneakers(res.data))
-    axios.get('https://649b9cff048075719236bd66.mockapi.io/basket')
-      .then(res=> setBasketItems(res.data))
-      axios.get('https://649c7b6e0480757192383bfc.mockapi.io/favourites')
-      .then(res=> setFavourites(res.data))
+    async function fetchData(){
+      const sneakersResp = await axios.get('https://649b9cff048075719236bd66.mockapi.io/items');
+      const basketItemsResp =await axios.get('https://649b9cff048075719236bd66.mockapi.io/basket');
+      const favoritesResp =await axios.get('https://649c7b6e0480757192383bfc.mockapi.io/favourites');
+
+      setBasketItems(basketItemsResp.data);
+      setFavorites(favoritesResp.data);
+      setSneakers(sneakersResp.data);
+    }
+    fetchData();
   }, [])
 
-  const onAddToFavourite= async(obj)=>{
+  const onAddToFavorite= async(obj)=>{
     try{
-      if(favourites.find((item)=>item.id===obj.id)){
-        axios.delete(`https://649c7b6e0480757192383bfc.mockapi.io/favourites/${obj.id}` )
+      if(favorites.find((item)=>item.id===obj.id)){
+        axios.delete(`https://649c7b6e0480757192383bfc.mockapi.io/favourites/${obj.id}` );
       }else{
-        const {data} = await axios.post('https://649c7b6e0480757192383bfc.mockapi.io/favourites', obj)
-        setFavourites((prevItem=> [...prevItem, data]))
+        const {data} = await axios.post('https://649c7b6e0480757192383bfc.mockapi.io/favourites', obj);
+        setFavorites((prevItem=> [...prevItem, data]));
       }
     } catch(error){
-      console.log("Error");
+      console.log("Error");;
     }
-
   }
+
   return (
     <div className='wrapper clear'>
     {cartOpened && <Basket 
@@ -42,8 +47,8 @@ const App=()=> {
         basketItems = {basketItems}
         onClose={()=>setCartOpened(false)} 
         onRemove={(id)=>{
-          axios.delete(`https://649b9cff048075719236bd66.mockapi.io/basket/${id}`)
-          setBasketItems((prevItem)=> prevItem.filter((item)=> Number(item.id)!==Number(id)))
+          axios.delete(`https://649b9cff048075719236bd66.mockapi.io/basket/${id}`);
+          setBasketItems((prevItem)=> prevItem.filter((item)=> Number(item.id)!==Number(id)));
         }}
       />
     }
@@ -56,20 +61,20 @@ const App=()=> {
           <HomePage 
           sneakers={sneakers} 
           searchValue={searchValue} 
-          setFavourites={setFavourites} 
+          setFavourites={setFavorites} 
           setSearchValue={setSearchValue} 
           setBasketItems={setBasketItems}
-          onAddToFavourite={onAddToFavourite}/>
+          onAddToFavorite={onAddToFavorite}/>
         }
       ></Route>
       <Route
-        path="/favourites"
+        path="/favorites"
         exact
         element={
-        <FavouritesPage 
-          favourites={favourites}     
+        <FavoritesPage 
+          favourites={favorites}     
           setBasketItems={setBasketItems}        
-          onAddToFavourite={onAddToFavourite}/>}
+          onAddToFavourite={onAddToFavorite}/>}
       ></Route>
     </Routes>
   </div>

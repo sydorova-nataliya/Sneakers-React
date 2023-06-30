@@ -5,14 +5,14 @@ import Card from '../../routes/Card';
 
 import './styles.scss';
 
-const FavouritesPage = ({favourites,setBasketItems, onAddToFavourite })=>{
+const FavoritesPage = ({favorites,setBasketItems, onAddToFavorite })=>{
   return (
     <div className='content p-40 '>
       <h1 className="content__title title">Мої закладки</h1> 
       {
-        favourites.length > 0 && (
+        favorites.length > 0 && (
           <div className="content__holder">
-            {favourites.map(({ id, name, price, imageURL }) => (
+            {favorites.map(({ id, name, price, imageURL }) => (
               <Card
                 id={id}
                 name={name}
@@ -20,7 +20,7 @@ const FavouritesPage = ({favourites,setBasketItems, onAddToFavourite })=>{
                 imageURL={imageURL}
                 favorited={true}
                 onFavourite={() => {
-                  onAddToFavourite({ id, name, price, imageURL });
+                  onAddToFavorite({ id, name, price, imageURL });
                 }}
                 onClick={(obj) => {
                   axios
@@ -31,9 +31,8 @@ const FavouritesPage = ({favourites,setBasketItems, onAddToFavourite })=>{
             ))}
         </div>
       )}
-
       {
-        favourites.length === 0 && (
+        favorites.length === 0 && (
           <div className="favourites-empty">
             <img src="/img/favourites-empty.jpg" alt="favourites-empty" />
             <h5 className="favourites-empty__title">Закладок немає!</h5>
@@ -46,4 +45,4 @@ const FavouritesPage = ({favourites,setBasketItems, onAddToFavourite })=>{
   )
 }
 
-export default FavouritesPage;
+export default FavoritesPage;
