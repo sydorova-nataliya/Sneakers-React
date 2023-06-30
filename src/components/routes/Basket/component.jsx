@@ -10,7 +10,7 @@ const Basket = ({onRemove, onClose, basketItems = []})=>{
         </div>
         {
           basketItems.length > 0 ? basketItems.map(({id,name, price, imageURL})=>(
-            <div className="basket__item d-flex justify-between align-center">
+            <div key={id} className="basket__item d-flex justify-between align-center">
             <img className="basket__img" src={imageURL} alt="sneakers"/>
             <div>
               <p className='basket__title'>{name}</p>
@@ -24,9 +24,9 @@ const Basket = ({onRemove, onClose, basketItems = []})=>{
             <button className='basket-empty__btn btn' onClick={onClose}>Повернутися назад!</button>
           </div>
         }
-
       </div>
     </div>
   )
 }
+
 export default Basket;

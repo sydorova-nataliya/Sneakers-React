@@ -4,7 +4,7 @@ import Card from '../../routes/Card';
 
 import './styles.scss';
 
-const HomePage = ({sneakers,searchValue,setFavourites,setSearchValue, setBasketItems, onAddToFavourite})=>{
+const HomePage = ({sneakers,searchValue,setSearchValue, setBasketItems, onAddToFavourite})=>{
 
   return (
     <div className='content p-40 '>
@@ -25,8 +25,8 @@ const HomePage = ({sneakers,searchValue,setFavourites,setSearchValue, setBasketI
             price={price}
             imageURL={imageURL}
             onClick={ (obj)=>{
-              axios.post('https://649b9cff048075719236bd66.mockapi.io/basket', obj)
-              .then(res =>setBasketItems(prev => [...prev, res.data]))
+                axios.post('https://649b9cff048075719236bd66.mockapi.io/basket', obj)
+                .then(res =>setBasketItems(prev => [...prev, res.data]))
             }}
             onFavourite={()=>{onAddToFavourite({id,name, price, imageURL})}}
           />

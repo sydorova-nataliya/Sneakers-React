@@ -14,7 +14,7 @@ const Card = ({id, name, price, imageURL, onClick, onFavourite, favorited = fals
     setIsFavourite(!isFavourite);
   }
   return (
-  <div className="card">
+  <div className="card" key={id}>
     {isFavourite ?  <img  className='cu-p' src="img/liked.svg" alt="like" onClick={handleFavourite}/> : <img className='card__like cu-p ' src="img/like.svg" alt="like" onClick={handleFavourite}/>}
     <img className='card__img' src={imageURL} alt="sneakers"/>
     <h5 className='card__title'>{name}</h5>
