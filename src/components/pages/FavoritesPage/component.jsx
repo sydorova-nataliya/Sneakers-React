@@ -9,6 +9,7 @@ const FavoritesPage = ({favorites,setBasketItems, onAddToFavorite })=>{
   return (
     <div className='content p-40 '>
       <h1 className="content__title title">Мої закладки</h1> 
+      console.log(favorites);
       {
         favorites.length > 0 && (
           <div className="content__holder">
@@ -19,7 +20,7 @@ const FavoritesPage = ({favorites,setBasketItems, onAddToFavorite })=>{
                 price={price}
                 imageURL={imageURL}
                 favorited={true}
-                onFavourite={() => {
+                onFavorite={() => {
                   onAddToFavorite({ id, name, price, imageURL });
                 }}
                 onClick={(obj) => {

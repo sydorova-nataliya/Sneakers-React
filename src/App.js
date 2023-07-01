@@ -13,7 +13,7 @@ const App=()=> {
   const [favorites, setFavorites] = useState([]);
   const [basketItems, setBasketItems] = useState([]);
   const [searchValue, setSearchValue] = useState('');
-
+  console.log(favorites);
   useEffect(()=>{
     async function fetchData(){
       const sneakersResp = await axios.get('https://649b9cff048075719236bd66.mockapi.io/items');
@@ -61,7 +61,6 @@ const App=()=> {
           <HomePage 
           sneakers={sneakers} 
           searchValue={searchValue} 
-          setFavourites={setFavorites} 
           setSearchValue={setSearchValue} 
           setBasketItems={setBasketItems}
           onAddToFavorite={onAddToFavorite}/>
@@ -72,9 +71,9 @@ const App=()=> {
         exact
         element={
         <FavoritesPage 
-          favourites={favorites}     
+          favorites={favorites}     
           setBasketItems={setBasketItems}        
-          onAddToFavourite={onAddToFavorite}/>}
+          onAddToFavorite={onAddToFavorite}/>}
       ></Route>
     </Routes>
   </div>

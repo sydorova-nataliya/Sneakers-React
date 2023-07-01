@@ -28,7 +28,7 @@ const HomePage = ({sneakers,searchValue,setSearchValue, setBasketItems, onAddToF
                   axios.post('https://649b9cff048075719236bd66.mockapi.io/basket', obj)
                   .then(res =>setBasketItems(prev => [...prev, res.data]))
               }}
-              onFavourite={()=>{onAddToFavorite({id,name, price, imageURL})}}
+              onFavorite={()=>{onAddToFavorite({id,name, price, imageURL})}}
             />
           ))
         }
